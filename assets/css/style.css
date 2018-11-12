@@ -1,0 +1,17 @@
+body {
+    background-image: url(https://donnalynyates.files.wordpress.com/2013/06/geodes.jpg);
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    color: aliceblue;
+}
+
+.row {
+    background-color: black;
+    width: 400px;
+}
