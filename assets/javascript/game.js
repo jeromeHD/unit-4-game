@@ -1,5 +1,6 @@
 $(document).ready(function() {
-  var yourGuess = 0;
+  //Variables
+  var yourMatchingNumber = 0;
   var randomNum = randomNumGen();
   var wins = 0;
   var losses = 0;
@@ -34,8 +35,8 @@ $(document).ready(function() {
   // Function that resets the game.
   function setGame() {
     // Set current total number 0.
-    yourGuess = 0;
-    // Random crystal values.
+    yourMatchingNumber = 0;
+    // Random crystal value.
     crystals = randomNumCrystals();
     // Random number and set to the page.
     randomNum = randomNumGen();
@@ -70,7 +71,6 @@ $(document).ready(function() {
     $("#win-area").append(pLosses);
   }
 
-  // Function to render our crystals to the page.
   function renderCrystals() {
     for (var key in crystals) {
       var crystalDiv = $(
@@ -85,20 +85,16 @@ $(document).ready(function() {
     }
   }
 
-  // Function to update our "current guess" number. We are passing in the crystal that was clicked as an argument.
   function updateMatchingNumber(crystal) {
-    // Update our "current guess" number based on which crystal was clicked.
-    yourGuess += crystals[crystal.attr("data-name")].points;
+    yourMatchingNumber += crystals[crystal.attr("data-name")].points;
   }
 
-  // Function that will render your "current guess" number to the page.
   function renderMatchingNumber() {
-    var scoreNumDiv = $("<div id='score-number'>").text(yourGuess);
+    var scoreNumDiv = $("<div id='score-number'>").text(yourMatchingNumber);
     $("#score-number").html();
     $("#score-number").html(scoreNumDiv);
   }
 
-  // Call our functions to start the game!
   setGame();
   updateDom();
   renderCrystals();
@@ -109,11 +105,11 @@ $(document).ready(function() {
     renderMatchingNumber();
 
     // Check to see if we have won or lost.
-    if (yourGuess === randomNum) {
+    if (yourMatchingNumber === randomNum) {
       wins++;
       setGame();
       updateDom(true);
-    } else if (yourGuess > randomNum) {
+    } else if (yourMatchingNumber > randomNum) {
       losses++;
       setGame();
       updateDom(false);
