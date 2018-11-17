@@ -47,6 +47,14 @@ $(document).ready(function() {
   function updateDom(didUserWin) {
     $("#win-loss").empty();
 
+    var pWins = $("<p>").text("Wins: " + wins);
+    var pLosses = $("<p>").text("Losses: " + losses);
+
+    $("#win-area")
+      .empty()
+      .append(pWins);
+    $("#win-area").append(pLosses);
+
     if (didUserWin === true) {
       $("#win-area").append($("<p>").text("You won!!"));
       setGame();
@@ -56,21 +64,7 @@ $(document).ready(function() {
       setGame();
       renderMatchingNumber();
     }
-
-    // Win/Loss
-    var wSpan = $("<span>").text(wins);
-    var lSpan = $("<span>").text(losses);
-
-    var pWins = $("<p>").text("Wins: ");
-    var pLosses = $("<p>").text("Losses: ");
-
-    pWins.append(wSpan);
-    pLosses.append(lSpan);
-
-    $("#win-area").append(pWins);
-    $("#win-area").append(pLosses);
   }
-
   function renderCrystals() {
     for (var key in crystals) {
       var crystalDiv = $(
